@@ -12,13 +12,13 @@
 
               <div v-if="error" class="alert alert-danger" style="margin: 15px">
                 <button type="button" aria-hidden="true" class="close">×</button>
-                <span>
+                <span style="color: red">
                             <b> Failed - </b> {{errorMessage}} </span>
               </div>
 
               <div class="card-body">
-                <div class="card-body">
-                  <div style="padding:10px" v-if="loading">
+                <div class="card-header">
+                  <div style="padding:10px; color: darkgray; font-size:12px " v-if="loading">
                     Loading...
                   </div>
 
@@ -79,11 +79,47 @@
 </template>
 
 <script>
-
+import store from '../store/index'
+import axios from 'axios'
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  name: 'Signin',
+  components: {
+
+  },
+  data(){
+    return {
+      loading: false,
+      email : "",
+      password : "",
+      error: null,
+      errorMessage: null
+    }
+  },
+  methods: {
+    submitLogin() {
+      this.loading = true
+      axios.post('auth/login', {
+        email: this.email,
+        password: this.password
+      }).then(response => {
+        this.loading = false
+        // login user, store the token and redirect to dashboard
+        store.commit('loginUser')
+        store.commit('token',response.data.data.token )
+        localStorage.setItem('token', response.data.data.token)
+        console.log(response.data.data.token)
+        this.$router.push({ name: 'Home' })
+      }).catch(error => {
+        this.loading = false
+        this.error = true
+        this.errorMessage = error.message
+        if(this.errorMessage === null){
+          this.errorMessage = "Turn on Database"
+        }else{
+          this.errorMessage = error.response.data.error.message
+        }
+      });
+    },
   }
 }
 </script>
