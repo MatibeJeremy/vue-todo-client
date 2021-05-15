@@ -77,9 +77,17 @@
         </div>
       </div>
       <div v-if="week">
-        <p style="color: darkgray; font-weight: bolder">{{weekdays}}</p>
-        <button ><span style="color: darkgray; margin-right: 20%; position: absolute; top:155px; right: 170px; font-size: 20px">&#62;</span></button>
-        <button><span style="color: darkgray; margin-right: 41%; position: absolute; top:155px; right: 170px; font-size: 20px">&#60;</span></button>
+        <div class="flex-row">
+        <p style="color: darkgray; font-weight: bolder; width:50%; display:inline!important; ">{{weekdays}}  </p>
+        <p style="color: darkgray; font-weight: bolder; display: inline">- {{weekday}}</p>
+          <div>
+          <p style="color: darkgray; font-size:10px; margin-left: auto; margin-right: auto;display:inline!important;" >{{week_day}}  </p>
+          <p style="color: darkgray; font-size:10px; margin-left: auto; margin-right: auto;display:inline;" >  -  </p>
+          <p style="color: darkgray; font-size:10px; margin-left: auto; margin-right: auto; display:inline;"> {{week_days}}  </p>
+          </div>
+        </div>
+        <button style="background-color:#2c3e50; outline:none; border:none"><span style="color: darkgray; margin-right: 20%; position: absolute; top:130px; right: 170px; font-size: 20px">&#62;</span></button>
+        <button style="background-color:#2c3e50; outline:none; border:none"><span style="color: darkgray; margin-right: 41%; position: absolute; top:130px; right: 170px; font-size: 20px">&#60;</span></button>
       </div>
     </div>
   </div>
@@ -108,7 +116,10 @@ export default {
     return {
       day: true,
       week:false,
-      weekdays:moment().subtract(1, 'weeks').startOf('isoWeek').format('YYYY-MM-DD'),
+      weekdays:moment().startOf('isoWeek').format('YYYY/MM/DD'),
+      weekday:moment().startOf('isoWeek').add(1, 'weeks').format('YYYY/MM/DD'),
+      week_day:moment().startOf('isoWeek').format('dddd'),
+      week_days:moment().startOf('isoWeek').add(1, 'weeks').format('dddd'),
       date:moment().format('ll'),
       yesterday:null,
       token:localStorage.getItem('token'),
