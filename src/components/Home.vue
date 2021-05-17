@@ -16,7 +16,9 @@
         <button style="background-color:#2c3e50; outline:none; border: none" v-on:click="subtractDay"><span style="border:none; color: darkgray; margin-right: 41%; position: absolute; top:110px; right: 170px; font-size: 20px">&#60;</span></button>
 
         <div class="input-group mb-3" style="width: 90%; margin-left:auto; margin-right: auto;">
-          <button data-toggle="modal" data-target="#exampleModal"  style=" background-color: #2c3e50; color: darkgray" class="form-control" ><i style="float:left" class="bi bi-list">Add a task...</i></button>
+          <button data-toggle="modal" data-target="#exampleModal"  style=" background-color: #2c3e50; color: darkgray" class="form-control" ><i style="float:left" class="bi bi-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg>      Add a task...</i></button>
 
         </div>
         <!-- Button trigger modal -->
@@ -84,6 +86,38 @@
           <p style="color: darkgray; font-size:10px; margin-left: auto; margin-right: auto;display:inline!important;" >{{week_day}}  </p>
           <p style="color: darkgray; font-size:10px; margin-left: auto; margin-right: auto;display:inline;" >  -  </p>
           <p style="color: darkgray; font-size:10px; margin-left: auto; margin-right: auto; display:inline;"> {{week_days}}  </p>
+          </div>
+          <div class="input-group mb-3" style="width: 90%; margin-left:auto; margin-right: auto; margin-top: 10px">
+            <button data-toggle="modal" data-target="#exampleModal1"  style=" background-color: #2c3e50; color: darkgray" class="form-control" ><i style="float:left" class="bi bi-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>    Add a task...</i></button>
+
+          </div>
+
+          <div style="opacity: 1" class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+            <div class="modal-dialog" >
+              <div class="modal-content" style="background-color: #2c3e50">
+                <div class="modal-header">
+                  <h5 style="color: darkgray" class="modal-title" id="exampleModalLabel1"> ADD A TASK</h5>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <input style="background-color: #2c3e50" placeholder="Todo description" type="text" class="form-control">
+                    <br>
+
+                    <input style="background-color: #2c3e50" type="text" class="form-control" placeholder="memo">
+                    <br>
+
+                    <button type="button" class="btn btn-danger" style="float: left">Add Task</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="float: right">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <button style="background-color:#2c3e50; outline:none; border:none"><span style="color: darkgray; margin-right: 20%; position: absolute; top:130px; right: 170px; font-size: 20px">&#62;</span></button>
