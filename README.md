@@ -12,36 +12,16 @@ npm run serve
 ```
 
 ### Login
-<img
-src=“public/login.png”
-raw=true
-alt=“Subject Pronouns”
-style=“margin-right: 10px;”
-/>
+![Test Image 1](public/login.png)
 
 ### Register
-<img
-src=“public/register.png”
-raw=true
-alt=“Subject Pronouns”
-style=“margin-right: 10px;”
-/>
+![Test Image 2](public/register.png)
 
 ### Day View
-<img
-src=“public/day.png”
-raw=true
-alt=“Subject Pronouns”
-style=“margin-right: 10px;”
-/>
+![Test Image 3](public/day.png)
 
 ### Week View
-<img
-src=“public/week.png”
-raw=true
-alt=“Subject Pronouns”
-style=“margin-right: 10px;”
-/>
+![Test Image 4](public/week.png)
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
