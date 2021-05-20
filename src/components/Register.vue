@@ -22,7 +22,7 @@
             </div>
 
             <div class="card-body">
-              <div style="padding:10px" v-if="loading">
+              <div style="padding:10px; color: darkgray" v-if="loading">
                 Loading...
               </div>
 
@@ -40,11 +40,6 @@
                 <div class="form-group">
                   <label for="password" style="color:darkgray; font-size:12px; float: left">Password</label>
                   <input class="form-control" type="password" v-model="password" required="" id="password" placeholder="Password">
-                </div>
-
-                <div class="form-group">
-                  <label for="confirm_password" style="color:darkgray; font-size:12px; float: left">Confirm Password</label>
-                  <input class="form-control" type="password" v-model="password" required="" id="confirm_password" placeholder="Password">
                 </div>
 
                 <div class="form-group account-btn text-center mt-2">
@@ -89,7 +84,6 @@ export default {
       name : "",
       email : "",
       password : "",
-      role : "CLIENT",
       error: null,
       errorMessage: null,
       success: null,
@@ -100,25 +94,23 @@ export default {
   methods:{
 
     register() {
-      this.$Progress.start()
       this.loading = true
       axios.post('auth/register', {
         name: this.name,
         email: this.email,
-        role: 'CLIENT',
         password: this.password
       }).then(response => {
+        console.log(response)
         this.loading = false
         this.success = true
         this.successMessage = 'Check your emails.(Ensure you check the spam folder as well.)'
-        this.$Progress.finish()
-        console.log(response)
+        setTimeout( () => this.$router.push({ path: '/Signin'}), 5000);
       }).catch(error => {
-        this.loading = false
-        this.$Progress.fail()
         console.log(error)
+        this.loading = false
         this.error = true
-        this.errorMessage = error.response.data.error.message
+        this.errorMessage = 'Try again with Different Data'
+        location.reload()
       });
     }
   }

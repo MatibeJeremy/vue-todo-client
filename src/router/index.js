@@ -12,11 +12,17 @@ const routes = [
         path: "/",
         component: Home,
         name:'Home',
+        meta: {
+            requiresAuth:true
+        }
     },
     {
         path: "/home",
         component: Home,
         name:'Home',
+        meta: {
+            requiresAuth:true
+        }
     },
     {
         path: '/register',
@@ -38,14 +44,14 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
 
     // check if the route requires authentication and user is not logged in
-    if (to.matched.some(route => route.meta.requiresAuth) && store.state.token == null) {
+    if (to.matched.some(route => route.meta.requiresAuth) && !store.state.isLoggedIn) {
         // redirect to login page
         next({ name: 'Signin' })
         return
     }
 
     // if logged in redirect to dashboard
-    if(to.path === '/Signin' && store.state.token) {
+    if(to.path === '/Signin' && store.state.isLoggedIn) {
         next({ name: 'Home' })
         return
     }
